@@ -20,6 +20,6 @@ variable "gke_num_nodes" {
 }
 
 variable "machine_type" {
-  default     = "n1-standard-1"
+  default     = "n2-standard-4"
   description = "The machine type"
 }
