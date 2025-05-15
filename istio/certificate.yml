@@ -1,17 +1,8 @@
-apiVersion: cas-issuer.jetstack.io/v1beta1
-kind: GoogleCASClusterIssuer
-metadata:
-  name: cas-issuer
-spec:
-  project: boreal-mode-295611
-  location: europe-west1
-  caPoolId: istio-ca-pool
-  # googleServiceAccountEmail: cert-manager-cas-issuer-sa@boreal-mode-295611.iam.gserviceaccount.com
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: myapp-myorg-com-cert
+  name: myapp-ingress-tls
   namespace: istio-system
 spec:
   secretName: myapp-ingress-tls  # Used in Istio Gateway `credentialName`

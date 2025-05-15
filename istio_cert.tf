@@ -25,7 +25,7 @@ resource "google_privateca_certificate_authority" "root_ca" {
   location                 = google_privateca_ca_pool.cas_pool.location
   pool                     = google_privateca_ca_pool.cas_pool.name
   type                     = "SELF_SIGNED"
-  deletion_protection      = true
+  deletion_protection      = false
   key_spec {
     algorithm = "RSA_PKCS1_2048_SHA256"
   }
