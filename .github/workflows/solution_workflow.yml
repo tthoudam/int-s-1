@@ -3,17 +3,11 @@ name: 'Build and Deploy to GKE'
 on:
   push:
     branches:
-      - '"main"'
-
-env:
-  PROJECT_ID: 'boreal-mode-295611'
-  GKE_CLUSTER: 'boreal-mode-295611-gke-int-s-1'
-  GKE_ZONE: 'europe-west1-b'
-  DEPLOYMENT_NAME: 'gke-test'
+      - "main"
 
 jobs:
   deploy-all:
-    name: 'Setup, terraform, Helm, Istio, Deploy'
+    name: 'Setup terraform, Helm, Istio and Deploy'
     runs-on: 'ubuntu-latest'
     environment: 'test'
 
