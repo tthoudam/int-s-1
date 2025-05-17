@@ -10,7 +10,7 @@ spec:
   renewBefore: 360h # 15d
   commonName: myapp.myorg.com
   dnsNames:
-    - app.example.com
+    - myapp.myorg.com
   issuerRef:
     name: cas-issuer
     kind: GoogleCASClusterIssuer

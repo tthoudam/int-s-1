@@ -10,7 +10,7 @@ resource "google_project_service" "enable_kms" {
 # Create CAS ca pool
 resource "google_privateca_ca_pool" "cas_pool" {
   name     = "istio-ca-pool"
-  location = "europe-west1"
+  location = var.location
   tier     = "ENTERPRISE"
 
   publishing_options {
@@ -19,10 +19,10 @@ resource "google_privateca_ca_pool" "cas_pool" {
   }
 }
 
-# Create a simple/basic self-signed CA within the pool. Output the CA Pool resource name.
+# Create a simple/basic self-managed CA within the pool. Output the CA Pool resource name.
 resource "google_privateca_certificate_authority" "root_ca" {
   certificate_authority_id = "istio-root-ca"
-  location                 = google_privateca_ca_pool.cas_pool.location
+  location                 = var.location
   pool                     = google_privateca_ca_pool.cas_pool.name
   type                     = "SELF_SIGNED"
   deletion_protection      = false
@@ -33,12 +33,12 @@ resource "google_privateca_certificate_authority" "root_ca" {
   config {
     subject_config {
       subject {
-        common_name  = "istio-root-ca"
-        organization = "Example Corp"
+        common_name  = "myorg.com"
+        organization = "myorg"
         country_code = "GB"
       }
       subject_alt_name {
-        dns_names = ["istio.example.com"]
+        dns_names = ["*.myorg.com"]
       }
     }
     x509_config {

@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: app-vs
+  name: app-virtual-service
   namespace: hello-world
 spec:
   hosts:
@@ -11,6 +11,6 @@ spec:
   http:
     - route:
         - destination:
-            host: hello-world
+            host: hello-world.default.svc.cluster.local
             port:
               number: 80

@@ -1,8 +1,3 @@
-output "region" {
-  value       = var.region
-  description = "GCloud Region"
-}
-
 output "project_id" {
   value       = var.project_id
   description = "GCloud Project ID"
@@ -28,7 +23,7 @@ output "ca_pool_resource_name" {
 }
 
 output "ca_pool_id" {
-  value = google_privateca_ca_pool.cas_pool.ca_pool_id
+  value = google_privateca_ca_pool.cas_pool.id
 }
 
 output "google_cloud_sa_email" {
@@ -37,5 +32,5 @@ output "google_cloud_sa_email" {
 
 
 output "kubernetes_service_account" {
-  value = kubernetes_service_account.ksa.metadata.name
+  value = kubernetes_service_account.ksa.metadata[0].name
 }

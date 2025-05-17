@@ -3,7 +3,7 @@ name: 'Build and Deploy to GKE'
 on:
   push:
     branches:
-      - "main"
+      - 'main'
 
 jobs:
   deploy-all:
@@ -103,9 +103,9 @@ jobs:
 
       - name: Apply CAS/Ingress Manifests
         run: |
-            kubectl apply -f istio/cas-issuer.yaml
+            kubectl apply -f istio/cas_issuer.yaml
             kubectl apply -f istio/certificate.yaml
             kubectl apply -f istio/gateway.yaml
-            kubectl apply -f istio/virtual-service.yaml
+            kubectl apply -f istio/virtual_service.yaml
 
 

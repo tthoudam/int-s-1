@@ -23,5 +23,3 @@
         *   Configures `kubectl` and `helm`.
         *   Ensures Istio and Cert-Manager are present.
         *   Installs/upgrades the Helm chart from step 2, passing necessary values (Project ID, Region, CA Pool ID, Hostname, etc.).
-*   **Verification:** Does Terraform successfully create all CAS/KMS/IAM resources? Is the Helm chart installed successfully? Are the Cert-Manager (`ClusterIssuer`, `Certificate`) and Istio (`Gateway`, `VirtualService`) resources created on GKE? Is the K8s Secret (`myapp-ingress-tls`) created by Cert-Manager and populated with a certificate from the CAS CA? (May require manual cluster inspection).
-*   **Solution:** Place in: `/Senior/INT-S-1/solution_terraform/` (includes cas, gke, iam setup), `/Senior/INT-S-1/solution_helm/` (includes issuer, gateway, vs, cert), `/Senior/INT-S-1/solution_workflow.yml`

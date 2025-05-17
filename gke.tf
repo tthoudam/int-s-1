@@ -1,12 +1,12 @@
 data "google_container_engine_versions" "gke_version" {
-  location       = var.region
+  location       = var.location
   version_prefix = var.gke_version
 }
 
 resource "google_container_cluster" "primary" {
   name                     = "${var.project_id}-gke-${var.environment}"
   project                  = var.project_id
-  location                 = var.region
+  location                 = var.location
   remove_default_node_pool = true
   initial_node_count       = 1
 
@@ -31,7 +31,7 @@ resource "google_container_cluster" "primary" {
 
 resource "google_container_node_pool" "primary_nodes" {
   name     = google_container_cluster.primary.name
-  location = var.region
+  location = var.location
   cluster  = google_container_cluster.primary.name
 
   version    = data.google_container_engine_versions.gke_version.release_channel_default_version["STABLE"]

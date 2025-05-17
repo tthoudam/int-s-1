@@ -2,10 +2,6 @@ variable "project_id" {
   description = "project id"
 }
 
-variable "region" {
-  description = "region"
-}
-
 variable "ip_cidr_range" {
   description = "The VPC cidr block"
 }
@@ -20,7 +16,7 @@ resource "google_compute_network" "vpc" {
 # Subnet
 resource "google_compute_subnetwork" "cluster_subnet" {
   name          = "${var.project_id}-subnet-${var.environment}"
-  region        = var.region
+  region        = var.location
   network       = google_compute_network.vpc.name
   ip_cidr_range = var.ip_cidr_range
 }
